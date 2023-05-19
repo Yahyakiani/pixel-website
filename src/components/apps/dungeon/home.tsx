@@ -30,9 +30,10 @@ import bs58 from "bs58";
 import dungeon_title from "./images/Dungeon_Logo.png";
 import arena_title from "./images/Arena_Logo.png";
 
-import large_door from "./images/Large_Door.gif";
-import hallway from "./images/Hallway.gif";
-import hallway2 from "./images/Hallway2.gif";
+import large_door from "./images/Large_Door.gif"
+import hallway from "./images/Hallway.gif"
+import hallway2 from "./images/Hallway2.gif"
+import hourglass from "./images/Hourglass.gif"
 
 //buttons
 import enter_button from "./images/Enter_Button.png";
@@ -261,6 +262,11 @@ export function DungeonApp() {
 
     // referall code
     const [searchParams] = useSearchParams();
+
+    const [showHourGlass, setShowHourGlass] = useState(true)
+
+   
+
 
     //button processing
     const [processing_transaction, setProcessingTransaction] = useState<boolean>(false);
@@ -557,6 +563,8 @@ export function DungeonApp() {
 
         if (!check_user_state.current && !check_achievements.current) return;
 
+        setShowHourGlass(true)
+
         let player_data_key = PublicKey.findProgramAddressSync([wallet.publicKey.toBytes()], DUNGEON_PROGRAM)[0];
 
         let program_data_key = PublicKey.findProgramAddressSync([Buffer.from(DATA_ACCOUNT_SEED)], DUNGEON_PROGRAM)[0];
@@ -723,6 +731,9 @@ export function DungeonApp() {
                 setAchievementData(null);
             }
         }
+
+        setShowHourGlass(false)
+
     }, [wallet, bearer_token, current_key_mint, key_freeplays]);
 
     // interval for checking state
@@ -1895,6 +1906,13 @@ export function DungeonApp() {
                         </Box>
                         <Box width="10%"></Box>
                     </HStack>
+
+                    {
+                showHourGlass &&
+            <Box mt="2%" width="5rem" display="flex" justifyContent="center">
+                <img src={hourglass} alt="Hourglass" width="100%" height="auto" />
+            </Box>
+            }
 
                     <VStack width="100%" alignItems="center">
                         {transaction_failed && (
