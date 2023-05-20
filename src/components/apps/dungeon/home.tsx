@@ -865,8 +865,12 @@ export function DungeonApp() {
                     if (DEBUG) {
                         console.log("player killed enemy");
                     }
-                    setPlayerState(DungeonStatus.alive);
-                    setEnemyState(DungeonStatus.dead);
+                    setTimeout(() => {
+                        setPlayerState(DungeonStatus.alive);
+                        setEnemyState(DungeonStatus.dead);
+                    }, 1000);
+        
+                    //Victory sound plays
 
                     //Victory sound plays
                     playAudio(VictoryAudio);
@@ -874,9 +878,11 @@ export function DungeonApp() {
                     if (DEBUG) {
                         console.log("enemy killed player");
                     }
-                    setPlayerState(DungeonStatus.dead);
-                    setEnemyState(DungeonStatus.alive);
-
+                    setTimeout(() => {
+                        setPlayerState(DungeonStatus.dead);
+                        setEnemyState(DungeonStatus.alive);
+                    }, 1000);
+                    
                     //player death audio
                     playAudio(PlayerDeathAudio);
                 }
