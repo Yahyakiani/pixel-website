@@ -35,6 +35,9 @@ import carnivine_corpse from "./images/Vine_Corpse.png";
 import werewolf_corpse from "./images/Wolf_Corpse.png";
 import shade_corpse from "./images/Shade_Corpse.png";
 
+import Roll18 from "./images/Roll18.gif"
+import './css/dungeon_state.css'
+
 //characters
 import knight from "./images/Knight.gif";
 import ranger from "./images/Ranger.gif";
@@ -575,11 +578,16 @@ export const DisplayPlayerFailedText = ({
     let chosen_text: string = enemy_text[idx];
 
     return (
+        <>
         <Center width="90%">
             <Text className="font-face-sfpb" fontSize={DUNGEON_FONT_SIZE} textAlign="center" color="white">
                 {chosen_text}
             </Text>
         </Center>
+        <div className="Roll-container">
+          <img src={Roll18} alt="Roll 18" />
+        </div>
+      </>
     );
 };
 
@@ -638,6 +646,9 @@ export const DisplayPlayerSuccessText = ({
                             {loot_bonus ? "(x2 bonus)" : ""}
                         </Text>
                     </HStack>
+                    <div className="Roll-container">
+                <img src={Roll18} alt="Roll 18" />
+            </div>
 
                     <HStack alignContent="center" mt="1rem">
                         <Text fontSize={DUNGEON_FONT_SIZE} textAlign="center" color="white">
@@ -658,8 +669,12 @@ export const DisplayPlayerSuccessText = ({
     // otherwise  we retire
     return (
         <div className="font-face-sfpb">
-            <EnemyDefeatedText current_enemy={current_enemy} current_level={current_level} num_plays={num_plays} />
+            <EnemyDefeatedText current_enemy={current_enemy} current_level={current_level} num_plays={num_plays}/>
 
+            <div className="Roll-container">
+                <img src={Roll18} alt="Roll 18" />
+            </div>
+            
             <Center>
                 <HStack alignContent="center" mt="1rem">
                     <Text fontSize={DUNGEON_FONT_SIZE} textAlign="center" color="white">
