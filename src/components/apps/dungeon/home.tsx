@@ -868,12 +868,11 @@ export function DungeonApp() {
                     setTimeout(() => {
                         setPlayerState(DungeonStatus.alive);
                         setEnemyState(DungeonStatus.dead);
+                        //Victory sound plays
+                        playAudio(VictoryAudio)
                     }, 1000);
+                    
         
-                    //Victory sound plays
-
-                    //Victory sound plays
-                    playAudio(VictoryAudio);
                 } else {
                     if (DEBUG) {
                         console.log("enemy killed player");
@@ -881,10 +880,10 @@ export function DungeonApp() {
                     setTimeout(() => {
                         setPlayerState(DungeonStatus.dead);
                         setEnemyState(DungeonStatus.alive);
+                        //player death audio
+                        playAudio(PlayerDeathAudio)
                     }, 1000);
                     
-                    //player death audio
-                    playAudio(PlayerDeathAudio);
                 }
 
                 if (current_level > 0 && PROD && discord_play_message_sent.current === false) {
