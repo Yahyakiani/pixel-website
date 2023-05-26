@@ -1505,7 +1505,7 @@ export function DungeonApp() {
         return (
             <>
                 <Center>
-                    <img style={{ imageRendering: "pixelated" }} src={large_door} width={500} alt={"generic"} />
+                    <img style={{ imageRendering: "pixelated" }}  src={large_door} width={350} alt={"generic"} />
                 </Center>
             </>
         );
